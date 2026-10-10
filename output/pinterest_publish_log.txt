@@ -1,0 +1,27 @@
+================================================================================
+ PINTEREST AUTOMATIC PUBLISHER & BULK CSV FALLBACK — EXECUTION SUMMARY REPORT
+================================================================================
+Job Started:               2026-10-10T22:12:41.481Z
+Job Completed:             2026-10-10T22:12:45.298Z
+Execution Mode:            CSV_FALLBACK
+Fallback Triggered:        YES (Pinterest OAuth Access Token (PINTEREST_ACCESS_TOKEN) is not configured. Triggering automatic CSV Bulk Upload fallback.)
+--------------------------------------------------------------------------------
+Total Recipes Processed:   12
+Valid CSV Rows Generated:  12
+Invalid/Missing Rows:      0
+Rows Truncated (Limits):   2
+Direct API Successes:      0
+Direct API Failures:       0
+--------------------------------------------------------------------------------
+OUTPUT FILES GENERATED:
+  1. Strict Pinterest Template CSV:  C:\Users\jacka\Downloads\pinrecipe-scale-engine (1)\output\pinterest_bulk_upload_template.csv
+  2. Extended Audit CSV (w/ Errors): C:\Users\jacka\Downloads\pinrecipe-scale-engine (1)\output\pinterest_bulk_audit_extended.csv
+  3. JSON Summary Report:            C:\Users\jacka\Downloads\pinrecipe-scale-engine (1)\output\pinterest_publish_summary_report.json
+--------------------------------------------------------------------------------
+DETAILED EXECUTION LOG:
+[2026-10-10T22:12:41.483Z] [INFO] Starting Pinterest publishing job for 12 recipe(s)...
+[2026-10-10T22:12:45.297Z] [INFO] Validation complete: 12/12 valid, 0 invalid, 2 truncated to fit character limits.
+[2026-10-10T22:12:45.297Z] [WARN] Pin #1 ("What Is Cucina Povera? Traditional Italian Cooking on a Budget (+ Master Peasant Stew Recipe) ...") exceeded text limits and was truncated: Title truncated from 140 to 97 chars (removed: "Authentic Step-by-Step Italian Kitchen Guide")
+[2026-10-10T22:12:45.297Z] [WARN] Pin #7 ("Authentic Ligurian Pesto Pasta with Potatoes and Green Beans (Trenette al Pesto)") exceeded text limits and was truncated: Description truncated from 610 to 499 chars (removed: "Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!")
+[2026-10-10T22:12:45.297Z] [WARN] Pinterest OAuth Access Token (PINTEREST_ACCESS_TOKEN) is not configured. Triggering automatic CSV Bulk Upload fallback.
+================================================================================

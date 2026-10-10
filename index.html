@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      (function() {
+        try {
+          var rawFetch = window.fetch;
+          var boundFetch = rawFetch ? rawFetch.bind(window) : function() {
+            return Promise.reject(new Error('Fetch not available'));
+          };
+          var currentFetch = boundFetch;
+          var descriptor = {
+            get: function() {
+              return currentFetch;
+            },
+            set: function(fn) {
+              currentFetch = fn;
+            },
+            configurable: true,
+            enumerable: true
+          };
+
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            try {
+              Object.defineProperty(Window.prototype, 'fetch', descriptor);
+            } catch (e) {}
+          }
+          try {
+            Object.defineProperty(window, 'fetch', descriptor);
+          } catch (e) {}
+          if (typeof globalThis !== 'undefined' && globalThis !== window) {
+            try {
+              Object.defineProperty(globalThis, 'fetch', descriptor);
+            } catch (e) {}
+          }
+        } catch (err) {}
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PinRecipe Scale Engine [Scale v4.0] · Tool AZZDINE</title>
+    <meta name="description" content="Programmatic 5-in-1 Automated Recipe Pipeline & Pinterest Bulk Scheduler with WordPress REST integration, Gemini macro food photography synthesis, and scheduled pin syndication." />
+    <meta property="og:title" content="PinRecipe Scale Engine [Scale v4.0] · Tool AZZDINE" />
+    <meta property="og:description" content="Programmatic 5-in-1 Automated Recipe Pipeline & Pinterest Bulk Scheduler with WordPress REST integration, Gemini macro food photography synthesis, and scheduled pin syndication." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

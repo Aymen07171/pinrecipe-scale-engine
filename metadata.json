@@ -1,0 +1,7 @@
+{
+  "name": "PinRecipe Scale Engine - Tool AYMAN",
+  "description": "Programmatic 5-in-1 Automated Recipe Pipeline & Pinterest Bulk Scheduler with WordPress REST integration, Gemini macro food photography synthesis, and scheduled pin syndication.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
