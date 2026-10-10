@@ -1,0 +1,363 @@
+{
+  "jobStartedAt": "2026-10-10T22:12:41.481Z",
+  "jobCompletedAt": "2026-10-10T22:12:45.298Z",
+  "mode": "csv_fallback",
+  "fallbackTriggered": true,
+  "fallbackReason": "Pinterest OAuth Access Token (PINTEREST_ACCESS_TOKEN) is not configured. Triggering automatic CSV Bulk Upload fallback.",
+  "totals": {
+    "totalRecipesInput": 12,
+    "validRowsGenerated": 12,
+    "invalidRowsSkippedFromStrictCsv": 0,
+    "rowsWithTruncatedText": 2,
+    "apiPublishedSuccess": 0,
+    "apiPublishedFailed": 0
+  },
+  "characterLimitsEnforced": {
+    "titleMaxChars": 100,
+    "descriptionMaxChars": 500,
+    "altTextMaxChars": 500
+  },
+  "truncatedRowsDetail": [
+    {
+      "rowNumber": 1,
+      "title": "What Is Cucina Povera? Traditional Italian Cooking on a Budget (+ Master Peasant Stew Recipe) ...",
+      "truncatedInfo": "Title truncated from 140 to 97 chars (removed: \"Authentic Step-by-Step Italian Kitchen Guide\")"
+    },
+    {
+      "rowNumber": 7,
+      "title": "Authentic Ligurian Pesto Pasta with Potatoes and Green Beans (Trenette al Pesto)",
+      "truncatedInfo": "Description truncated from 610 to 499 chars (removed: \"Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!\")"
+    }
+  ],
+  "invalidRowsDetail": [],
+  "apiResults": [],
+  "pins": [
+    {
+      "index": 1,
+      "id": "rec-it-prio-01",
+      "priority": 1,
+      "title": "What Is Cucina Povera? Traditional Italian Cooking on a Budget (+ Master Peasant Stew Recipe) ...",
+      "mediaUrl": "https://foodsprepared.wasmer.app/wp-content/uploads/2026/10/recipe-6aca847e80e19.jpeg",
+      "board": "Budget-Friendly Italian Recipes",
+      "thumbnail": "",
+      "description": "Discover What Is Cucina Povera—the art of traditional Italian cooking on a budget—plus a master 30-minute peasant legume & pasta recipe with free PDF. Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!",
+      "link": "https://foodsprepared.wasmer.app/what-is-cucina-povera-traditional-italian-cooking-on-a-budget/",
+      "publishDate": "2026-10-10T23:12:41",
+      "keywords": "cucina povera, budget italian recipes, cheap family meals, italian pantry recipes, free recipe pdf",
+      "altText": "Traditional Italian pantry ingredients on kitchen counter",
+      "section": "Cucina Povera & Pantry",
+      "wasTruncated": true,
+      "truncatedText": "Title truncated from 140 to 97 chars (removed: \"Authentic Step-by-Step Italian Kitchen Guide\")",
+      "validationErrors": [],
+      "isValid": true,
+      "mediaValidation": {
+        "valid": true,
+        "status": 200,
+        "contentType": "",
+        "error": null
+      }
+    },
+    {
+      "index": 2,
+      "id": "rec-it-prio-02",
+      "priority": 2,
+      "title": "Easy One-Pot Roman Pasta e Ceci with Canned Chickpeas (25-Minute Pantry Dinner)",
+      "mediaUrl": "https://foodsprepared.wasmer.app/wp-content/uploads/2026/10/recipe-6aca847e80e19.jpeg",
+      "board": "Budget-Friendly Italian Recipes",
+      "thumbnail": "",
+      "description": "Make authentic Roman Pasta e Ceci in 25 minutes using canned chickpeas, ditalini pasta, garlic, and rosemary. Budget-friendly, one-pot, with free PDF! Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!",
+      "link": "https://foodsprepared.wasmer.app/easy-pasta-e-ceci-with-canned-chickpeas/",
+      "publishDate": "2026-10-11T02:12:41",
+      "keywords": "cucina povera, budget italian recipes, cheap family meals, italian pantry recipes, free recipe pdf",
+      "altText": "Bowl of Easy Pasta e Ceci with Canned Chickpeas",
+      "section": "Cucina Povera & Pantry",
+      "wasTruncated": false,
+      "truncatedText": "",
+      "validationErrors": [],
+      "isValid": true,
+      "mediaValidation": {
+        "valid": true,
+        "status": 200,
+        "contentType": "",
+        "error": null
+      }
+    },
+    {
+      "index": 3,
+      "id": "rec-it-prio-03",
+      "priority": 3,
+      "title": "Tuscan-Style White Beans with Tomatoes, Garlic & Fresh Rosemary (Fagioli all’Uccelletto)",
+      "mediaUrl": "https://foodsprepared.wasmer.app/wp-content/uploads/2026/10/recipe-6aca84833b4bd.jpeg",
+      "board": "Italian Soups, Beans & Vegetables",
+      "thumbnail": "",
+      "description": "Make authentic Tuscan-Style White Beans with Tomatoes and Rosemary (Fagioli all’Uccelletto) in 25 minutes using canned cannellini beans. Includes free PDF! Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!",
+      "link": "https://foodsprepared.wasmer.app/tuscan-style-white-beans-with-tomatoes-and-rosemary/",
+      "publishDate": "2026-10-11T05:12:41",
+      "keywords": "italian bean soup, pasta e fagioli, tuscan white beans, healthy italian soup, vegetarian italian",
+      "altText": "Tuscan-Style White Beans with Tomatoes and Rosemary in earthenware pot",
+      "section": "One-Pot Bean Stews",
+      "wasTruncated": false,
+      "truncatedText": "",
+      "validationErrors": [],
+      "isValid": true,
+      "mediaValidation": {
+        "valid": true,
+        "status": 200,
+        "contentType": "",
+        "error": null
+      }
+    },
+    {
+      "index": 4,
+      "id": "rec-it-prio-04",
+      "priority": 4,
+      "title": "Classic Pasta e Fagioli: An Easy One-Pot Italian Pasta and Bean Soup",
+      "mediaUrl": "https://foodsprepared.wasmer.app/wp-content/uploads/2026/10/recipe-6aca84833b4bd.jpeg",
+      "board": "Italian Soups, Beans & Vegetables",
+      "thumbnail": "",
+      "description": "Cozy up with authentic Italian Pasta e Fagioli! This easy 35-minute pasta and bean soup uses pantry cannellini beans, ditalini, and aromatic herbs. Free PDF! Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!",
+      "link": "https://foodsprepared.wasmer.app/pasta-e-fagioli-easy-italian-pasta-and-bean-soup/",
+      "publishDate": "2026-10-11T08:12:41",
+      "keywords": "italian bean soup, pasta e fagioli, tuscan white beans, healthy italian soup, vegetarian italian",
+      "altText": "Pot of Italian Pasta e Fagioli soup",
+      "section": "One-Pot Bean Stews",
+      "wasTruncated": false,
+      "truncatedText": "",
+      "validationErrors": [],
+      "isValid": true,
+      "mediaValidation": {
+        "valid": true,
+        "status": 200,
+        "contentType": "",
+        "error": null
+      }
+    },
+    {
+      "index": 5,
+      "id": "rec-it-prio-05",
+      "priority": 5,
+      "title": "5-Ingredient Italian Pantry Dinners (Ready in 20 Minutes with Everyday Staples)",
+      "mediaUrl": "https://foodsprepared.wasmer.app/wp-content/uploads/2026/10/recipe-6aca8484c9182.jpeg",
+      "board": "Quick 20-Minute Italian Dinners",
+      "thumbnail": "",
+      "description": "Turn 5 everyday pantry staples into restaurant-quality Italian dinners in 20 minutes! Includes our master Pantry Pasta formula, variations, and a free PDF card. Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!",
+      "link": "https://foodsprepared.wasmer.app/italian-pantry-dinners-made-with-five-everyday-ingredients/",
+      "publishDate": "2026-10-11T11:12:41",
+      "keywords": "quick italian dinners, 20 minute pasta, weeknight italian meals, easy italian recipes, printable recipe",
+      "altText": "Five Italian pantry ingredients on marble board",
+      "section": "Weeknight Skillets & Pastas",
+      "wasTruncated": false,
+      "truncatedText": "",
+      "validationErrors": [],
+      "isValid": true,
+      "mediaValidation": {
+        "valid": true,
+        "status": 200,
+        "contentType": "",
+        "error": null
+      }
+    },
+    {
+      "index": 6,
+      "id": "rec-it-prio-06",
+      "priority": 6,
+      "title": "What to Do with Leftover Italian Bread: Tuscan Panzanella, Bruschetta & Crispy Pangrattato",
+      "mediaUrl": "https://foodsprepared.wasmer.app/wp-content/uploads/2026/10/recipe-6aca8481ad7eb.jpeg",
+      "board": "Budget-Friendly Italian Recipes",
+      "thumbnail": "",
+      "description": "Never waste a loaf! Discover what to do with leftover Italian bread—including 20-minute Tuscan Panzanella, Pappa al Pomodoro, Bruschetta, and Pangrattato (+ PDF). Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!",
+      "link": "https://foodsprepared.wasmer.app/what-to-do-with-leftover-italian-bread/",
+      "publishDate": "2026-10-11T14:12:41",
+      "keywords": "cucina povera, budget italian recipes, cheap family meals, italian pantry recipes, free recipe pdf",
+      "altText": "Grilled leftover Italian bread bruschetta with tomatoes and burrata",
+      "section": "Cucina Povera & Pantry",
+      "wasTruncated": false,
+      "truncatedText": "",
+      "validationErrors": [],
+      "isValid": true,
+      "mediaValidation": {
+        "valid": true,
+        "status": 200,
+        "contentType": "",
+        "error": null
+      }
+    },
+    {
+      "index": 7,
+      "id": "rec-it-prio-07",
+      "priority": 7,
+      "title": "Authentic Ligurian Pesto Pasta with Potatoes and Green Beans (Trenette al Pesto)",
+      "mediaUrl": "https://foodsprepared.wasmer.app/wp-content/uploads/2026/10/recipe-6aca848661820.jpeg",
+      "board": "Authentic Pasta, Risotto & Gnocchi",
+      "thumbnail": "",
+      "description": "Make authentic Ligurian Pesto Pasta with Potatoes and Green Beans (Trenette al Pesto) in one pot! Learn the Genoese secret for bright emerald pesto (+ free PDF). Discover how traditional Genoese cooks boil diced Yukon Gold potatoes and tender green beans in the exact same pot as the trenette pasta so the starchy cooking water emulsifies with fresh basil, pine nuts, garlic, Parmigiano-Reggiano, Pecorino Fiore Sardo, and cold-pressed Ligurian extra virgin olive oil into a velvety emerald sauce...",
+      "link": "https://foodsprepared.wasmer.app/ligurian-pesto-pasta-with-potatoes-and-green-beans/",
+      "publishDate": "2026-10-11T17:12:41",
+      "keywords": "authentic italian pasta, trenette al pesto, homemade pasta sauce, italian comfort food, recipe pdf",
+      "altText": "Ligurian Pesto Pasta with Potatoes and Green Beans on ceramic plate",
+      "section": "Traditional Pasta Sauces",
+      "wasTruncated": true,
+      "truncatedText": "Description truncated from 610 to 499 chars (removed: \"Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!\")",
+      "validationErrors": [],
+      "isValid": true,
+      "mediaValidation": {
+        "valid": true,
+        "status": 200,
+        "contentType": "",
+        "error": null
+      }
+    },
+    {
+      "index": 8,
+      "id": "rec-it-prio-08",
+      "priority": 8,
+      "title": "Sardinian Fregola with Seafood or Summer Vegetables in Saffron-Tomato Brodo",
+      "mediaUrl": "https://foodsprepared.wasmer.app/wp-content/uploads/2026/10/recipe-6aca8489784e0.jpeg",
+      "board": "Regional Italian Cooking",
+      "thumbnail": "",
+      "description": "Discover Sardinian Fregola with Seafood or Vegetables—nutty toasted pearl pasta simmered in a golden saffron, white wine, and cherry tomato brodo (+ free PDF). Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!",
+      "link": "https://foodsprepared.wasmer.app/sardinian-fregola-with-seafood-or-vegetables/",
+      "publishDate": "2026-10-11T20:12:41",
+      "keywords": "regional italian food, sardinian fregola, abruzzo recipes, tuscan cooking, traditional italian",
+      "altText": "Bowl of Sardinian Fregola with Seafood and Vegetables",
+      "section": "Tuscany, Liguria, Sardinia & Abruzzo",
+      "wasTruncated": false,
+      "truncatedText": "",
+      "validationErrors": [],
+      "isValid": true,
+      "mediaValidation": {
+        "valid": true,
+        "status": 200,
+        "contentType": "",
+        "error": null
+      }
+    },
+    {
+      "index": 9,
+      "id": "rec-it-prio-09",
+      "priority": 9,
+      "title": "High-Protein Chicken Pesto Pasta with White Beans & Green Beans (44g Protein Meal Prep)",
+      "mediaUrl": "https://foodsprepared.wasmer.app/wp-content/uploads/2026/10/recipe-6aca848661820.jpeg",
+      "board": "High-Protein Italian Meal Prep",
+      "thumbnail": "",
+      "description": "Pack 44g of protein into your lunches with this 25-minute High-Protein Chicken Pesto Pasta for Meal Prep! Stays creamy for 4 days. Includes free PDF card. Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!",
+      "link": "https://foodsprepared.wasmer.app/high-protein-chicken-pesto-pasta-for-meal-prep/",
+      "publishDate": "2026-10-11T23:12:41",
+      "keywords": "high protein italian, chicken pesto meal prep, healthy pasta bowls, macro friendly italian, meal prep pdf",
+      "altText": "High-Protein Pesto Pasta with green beans",
+      "section": "Balanced Bowls & Lunches",
+      "wasTruncated": false,
+      "truncatedText": "",
+      "validationErrors": [],
+      "isValid": true,
+      "mediaValidation": {
+        "valid": true,
+        "status": 200,
+        "contentType": "",
+        "error": null
+      }
+    },
+    {
+      "index": 10,
+      "id": "rec-it-prio-10",
+      "priority": 10,
+      "title": "An Easy Italian Lentil and Tomato Ragù (Rich, Meaty & Budget-Friendly Bolognese)",
+      "mediaUrl": "https://foodsprepared.wasmer.app/wp-content/uploads/2026/10/recipe-6aca848cd332f.jpeg",
+      "board": "Budget-Friendly Italian Recipes",
+      "thumbnail": "",
+      "description": "Rich, hearty, and $1.40 per serving! Make this Easy Italian Lentil and Tomato Ragù in 40 minutes with pantry lentils, soffritto, and red wine. Free PDF card! Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!",
+      "link": "https://foodsprepared.wasmer.app/easy-italian-lentil-and-tomato-ragu/",
+      "publishDate": "2026-10-12T02:12:41",
+      "keywords": "cucina povera, budget italian recipes, cheap family meals, italian pantry recipes, free recipe pdf",
+      "altText": "Bowl of Italian Lentil and Tomato Ragu over pappardelle pasta",
+      "section": "Cucina Povera & Pantry",
+      "wasTruncated": false,
+      "truncatedText": "",
+      "validationErrors": [],
+      "isValid": true,
+      "mediaValidation": {
+        "valid": true,
+        "status": 200,
+        "contentType": "",
+        "error": null
+      }
+    },
+    {
+      "index": 11,
+      "id": "rec-it-prio-11",
+      "priority": 11,
+      "title": "20-Minute Air-Fryer Italian Frittata with Green Beans, Herbs & Pecorino",
+      "mediaUrl": "https://foodsprepared.wasmer.app/wp-content/uploads/2026/10/recipe-6aca8487e809c.jpeg",
+      "board": "Quick 20-Minute Italian Dinners",
+      "thumbnail": "",
+      "description": "Make a fluffy, golden Air-Fryer Italian Frittata with Green Beans and Pecorino in under 20 minutes—no flipping required! High-protein, gluten-free, with free PDF. Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!",
+      "link": "https://foodsprepared.wasmer.app/air-fryer-italian-frittata-with-green-beans/",
+      "publishDate": "2026-10-12T05:12:41",
+      "keywords": "quick italian dinners, 20 minute pasta, weeknight italian meals, easy italian recipes, printable recipe",
+      "altText": "Sliced Air-Fryer Italian Frittata with Green Beans on ceramic platter",
+      "section": "Weeknight Skillets & Pastas",
+      "wasTruncated": false,
+      "truncatedText": "",
+      "validationErrors": [],
+      "isValid": true,
+      "mediaValidation": {
+        "valid": true,
+        "status": 200,
+        "contentType": "",
+        "error": null
+      }
+    },
+    {
+      "index": 12,
+      "id": "rec-it-prio-12",
+      "priority": 12,
+      "title": "Abruzzese Scrippelle ’Mbusse (Crespelle in Brodo): Authentic Regional Italian Recipe",
+      "mediaUrl": "https://foodsprepared.wasmer.app/wp-content/uploads/2026/10/recipe-6aca8489784e0.jpeg",
+      "board": "Regional Italian Cooking",
+      "thumbnail": "",
+      "description": "Discover Abruzzese Crespelle in Brodo (Scrippelle ’Mbusse)—delicate cheese-rolled Italian crêpes bathed in golden broth. A hidden regional treasure (+ free PDF)! Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!",
+      "link": "https://foodsprepared.wasmer.app/abruzzese-crespelle-in-brodo-regional-italian-recipe/",
+      "publishDate": "2026-10-12T08:12:41",
+      "keywords": "regional italian food, sardinian fregola, abruzzo recipes, tuscan cooking, traditional italian",
+      "altText": "Fresh Italian eggs and grated cheese on marble counter",
+      "section": "Tuscany, Liguria, Sardinia & Abruzzo",
+      "wasTruncated": false,
+      "truncatedText": "",
+      "validationErrors": [],
+      "isValid": true,
+      "mediaValidation": {
+        "valid": true,
+        "status": 200,
+        "contentType": "",
+        "error": null
+      }
+    }
+  ],
+  "logs": [
+    {
+      "timestamp": "2026-10-10T22:12:41.483Z",
+      "level": "INFO",
+      "message": "Starting Pinterest publishing job for 12 recipe(s)..."
+    },
+    {
+      "timestamp": "2026-10-10T22:12:45.297Z",
+      "level": "INFO",
+      "message": "Validation complete: 12/12 valid, 0 invalid, 2 truncated to fit character limits."
+    },
+    {
+      "timestamp": "2026-10-10T22:12:45.297Z",
+      "level": "WARN",
+      "message": "Pin #1 (\"What Is Cucina Povera? Traditional Italian Cooking on a Budget (+ Master Peasant Stew Recipe) ...\") exceeded text limits and was truncated: Title truncated from 140 to 97 chars (removed: \"Authentic Step-by-Step Italian Kitchen Guide\")"
+    },
+    {
+      "timestamp": "2026-10-10T22:12:45.297Z",
+      "level": "WARN",
+      "message": "Pin #7 (\"Authentic Ligurian Pesto Pasta with Potatoes and Green Beans (Trenette al Pesto)\") exceeded text limits and was truncated: Description truncated from 610 to 499 chars (removed: \"Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!\")"
+    },
+    {
+      "timestamp": "2026-10-10T22:12:45.297Z",
+      "level": "WARN",
+      "message": "Pinterest OAuth Access Token (PINTEREST_ACCESS_TOKEN) is not configured. Triggering automatic CSV Bulk Upload fallback."
+    }
+  ]
+}
