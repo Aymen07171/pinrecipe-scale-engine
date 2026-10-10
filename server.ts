@@ -14,6 +14,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(express.json({ limit: '10mb' }));
+app.use('/output', express.static(path.resolve(__dirname, 'output')));
 
 const getGeminiClient = () => {
   const apiKey = process.env.CODECRAFT_API_KEY || process.env.GEMINI_API_KEY;

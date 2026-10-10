@@ -50,14 +50,30 @@ export const PinterestSchedulerView: React.FC<PinterestSchedulerViewProps> = ({
   const [rawStrictCsv, setRawStrictCsv] = useState<string>('');
 
   useEffect(() => {
-    fetch('/api/pinterest/status')
-      .then((r) => r.json())
+    fetch('./api/pinterest/status')
+      .then((r) => {
+        if (!r.ok) throw new Error('Static environment');
+        return r.json();
+      })
       .then((data) => {
         if (data?.summaryReport) {
           setSummaryReport(data.summaryReport);
         }
       })
-      .catch(() => {});
+      .catch(() => {
+        fetch('./output/pinterest_publish_summary_report.json')
+          .then((r) => (r.ok ? r.json() : null))
+          .then((report) => {
+            if (report) setSummaryReport(report);
+          })
+          .catch(() => {});
+        fetch('./output/pinterest_bulk_upload_template.csv')
+          .then((r) => (r.ok ? r.text() : ''))
+          .then((csvText) => {
+            if (csvText) setRawStrictCsv(csvText);
+          })
+          .catch(() => {});
+      });
   }, []);
 
   const handleAddBoard = (e: React.FormEvent) => {
@@ -71,7 +87,7 @@ export const PinterestSchedulerView: React.FC<PinterestSchedulerViewProps> = ({
   const handleRunPublishOrFallback = async () => {
     setIsRunningJob(true);
     try {
-      const res = await fetch('/api/pinterest/publish-or-fallback', {
+      const res = await fetch('./api/pinterest/publish-or-fallback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -83,6 +99,7 @@ export const PinterestSchedulerView: React.FC<PinterestSchedulerViewProps> = ({
           validateImages: true,
         }),
       });
+      if (!res.ok) throw new Error('Static fallback');
       const data = await res.json();
       if (data?.summaryReport) {
         setSummaryReport(data.summaryReport);
@@ -90,8 +107,21 @@ export const PinterestSchedulerView: React.FC<PinterestSchedulerViewProps> = ({
       if (data?.strictCsv) {
         setRawStrictCsv(data.strictCsv);
       }
-    } catch (err) {
-      console.error('Pinterest job failed:', err);
+    } catch {
+      try {
+        const [repRes, csvRes] = await Promise.all([
+          fetch('./output/pinterest_publish_summary_report.json'),
+          fetch('./output/pinterest_bulk_upload_template.csv'),
+        ]);
+        if (repRes.ok) {
+          setSummaryReport(await repRes.json());
+        }
+        if (csvRes.ok) {
+          setRawStrictCsv(await csvRes.text());
+        }
+      } catch (err) {
+        console.error('Pinterest static fallback failed:', err);
+      }
     } finally {
       setIsRunningJob(false);
     }
@@ -146,7 +176,7 @@ export const PinterestSchedulerView: React.FC<PinterestSchedulerViewProps> = ({
             </button>
 
             <a
-              href="/api/pinterest/download-csv"
+              href="./output/pinterest_bulk_upload_template.csv"
               download="pinterest_bulk_upload_template.csv"
               className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow transition-colors"
             >
@@ -155,7 +185,7 @@ export const PinterestSchedulerView: React.FC<PinterestSchedulerViewProps> = ({
             </a>
 
             <a
-              href="/api/pinterest/download-audit-csv"
+              href="./output/pinterest_bulk_audit_extended.csv"
               download="pinterest_bulk_audit_extended.csv"
               className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-semibold transition-colors"
             >
@@ -164,7 +194,7 @@ export const PinterestSchedulerView: React.FC<PinterestSchedulerViewProps> = ({
             </a>
 
             <a
-              href="/api/pinterest/download-log"
+              href="./output/pinterest_publish_log.txt"
               download="pinterest_publish_log.txt"
               className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-semibold transition-colors"
             >
