@@ -181,7 +181,16 @@ export const PinterestSchedulerView: React.FC<PinterestSchedulerViewProps> = ({
               className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow transition-colors"
             >
               <FileSpreadsheet className="w-4 h-4" />
-              <span>Download Template CSV (8 Cols)</span>
+              <span>All 22 Recipes CSV (8 Cols)</span>
+            </a>
+
+            <a
+              href="./output/pinterest_new_10_seo_recipes_template.csv"
+              download="pinterest_new_10_seo_recipes_template.csv"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold shadow transition-colors"
+            >
+              <FileSpreadsheet className="w-4 h-4" />
+              <span>New 10 SEO Recipes CSV (8 Cols)</span>
             </a>
 
             <a

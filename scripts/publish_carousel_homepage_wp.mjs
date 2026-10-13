@@ -5,6 +5,15 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Load .env if present
+const envPath = path.resolve(__dirname, '..', '.env');
+if (fs.existsSync(envPath)) {
+  for (const line of fs.readFileSync(envPath, 'utf8').split(/\r?\n/)) {
+    const m = line.match(/^([A-Z0-9_]+)=["']?(.*?)["']?$/);
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2];
+  }
+}
+
 const WP_URL = process.env.WP_SITE_URL || 'https://foodsprepared.wasmer.app';
 const SYNC_KEY = process.env.WP_AUTOSYNC_SECRET || '';
 
@@ -28,8 +37,8 @@ const CATEGORIES_CONFIG = [
     borderSoft: '#cde4d8',
     tagline: 'Under $2.00 / Serving · Cucina Povera Classics',
     description:
-      'Pasta e ceci, pasta e fagioli, pantry pasta, lentils, white beans, leftover bread dishes and inexpensive family meals crafted from humble everyday staples.',
-    priorities: [1, 2, 6, 10, 5],
+      'Pasta e patate con provola, Sicilian carrettiera, pasta e ceci, pasta e fagioli, lentils, white beans, leftover bread dishes and inexpensive family meals.',
+    priorities: [16, 21, 1, 2, 6, 10, 5],
   },
   {
     id: 'cat-quick-italian-dinners',
@@ -39,10 +48,10 @@ const CATEGORIES_CONFIG = [
     accent: '#D96B43',
     bgSoft: '#fdf3ef',
     borderSoft: '#f5d4c6',
-    tagline: '20–30 Minute Weeknight Favorites',
+    tagline: '15–30 Minute Weeknight Favorites',
     description:
-      '20–30-minute dinners, glossy pan sauces, one-pan skillets, and effortless Italian recipes designed for busy weeknight evenings.',
-    priorities: [5, 11, 2, 3, 9],
+      '15–30-minute dinners including Amalfi Pasta al Limone, viral Ash Pasta (Pasta alla Cenere), glossy pan sauces, and one-pan skillets for busy evenings.',
+    priorities: [13, 15, 5, 11, 2, 3, 9],
   },
   {
     id: 'cat-pasta-risotto-gnocchi',
@@ -52,10 +61,10 @@ const CATEGORIES_CONFIG = [
     accent: '#b45309',
     bgSoft: '#fef9ec',
     borderSoft: '#f7e3b5',
-    tagline: 'Artisanal Pasta Shapes & Traditional Sauces',
+    tagline: 'Artisanal Pasta Shapes & Roman Emulsions',
     description:
-      'Pasta shapes and sauces, risotto-style toasted fregola, homemade crêpes, baked pasta, and traditional regional pasta combinations.',
-    priorities: [7, 8, 10, 5, 4],
+      'Roman Rigatoni alla Zozzona, foolproof Pasta alla Gricia, Ligurian trenette al pesto, Sardinian fregola, and traditional pasta combinations.',
+    priorities: [14, 17, 7, 8, 10, 5, 4],
   },
   {
     id: 'cat-regional-italian-recipes',
@@ -65,10 +74,10 @@ const CATEGORIES_CONFIG = [
     accent: '#1d4ed8',
     bgSoft: '#eff6ff',
     borderSoft: '#bfdbfe',
-    tagline: 'Tuscany · Liguria · Sardinia · Abruzzo · Rome',
+    tagline: 'Puglia · Bologna · Tuscany · Liguria · Sardinia · Abruzzo',
     description:
-      'Dedicated collections for Liguria, Sardinia, Abruzzo, Tuscany, and Lazio—preserving authentic local methods and regional ingredients.',
-    priorities: [8, 12, 7, 3, 2],
+      'Dedicated collections for Puglia (Focaccia Barese), Emilia-Romagna (Gramigna con Salsiccia), Liguria, Sardinia, Abruzzo, and Tuscany.',
+    priorities: [19, 22, 8, 12, 7, 3, 2],
   },
   {
     id: 'cat-soups-beans-vegetables',
@@ -78,10 +87,10 @@ const CATEGORIES_CONFIG = [
     accent: '#15803d',
     bgSoft: '#f0fdf4',
     borderSoft: '#bbf7d0',
-    tagline: 'Hearty One-Pot Legume Stews & Market Sides',
+    tagline: 'Hearty One-Pot Legume Stews & Peasant Broths',
     description:
-      'Bean soups, velvety chickpea stews, Tuscan white beans, vegetable frittatas, Italian side dishes, and nourishing legume-based meals.',
-    priorities: [3, 4, 2, 12, 11],
+      'Tuscan Acquacotta Maremmana with broth-poached eggs, Pasta e Fagioli, Roman chickpea stews, Tuscan white beans, and nourishing vegetable dishes.',
+    priorities: [20, 3, 4, 2, 12, 11],
   },
   {
     id: 'cat-protein-rich-italian-meals',
@@ -93,8 +102,8 @@ const CATEGORIES_CONFIG = [
     borderSoft: '#e9d5ff',
     tagline: '20g–44g Protein · Balanced Dinners & Meal Prep',
     description:
-      'Chicken and seafood dinners, high-fiber legume meals, balanced pasta dishes, and recipes that store and reheat beautifully for work lunches.',
-    priorities: [9, 8, 10, 11, 4],
+      "Neapolitan Pesce all'Acqua Pazza (34g protein), high-protein chicken pesto meal prep, seafood fregola, and balanced legume meals.",
+    priorities: [18, 9, 8, 10, 11, 4],
   },
 ];
 
@@ -488,7 +497,6 @@ async function publishHomepages() {
       content: htmlContent,
       status: 'publish',
       categories: [t.category],
-      featured_image_url: byPriority[7].thumbnailUrl,
       seo: {
         meta_title: t.title,
         meta_description:
@@ -497,17 +505,27 @@ async function publishHomepages() {
       },
     };
 
-    const res = await fetch(`${WP_URL}/wp-json/autosync/v1/import`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-sync-key': SYNC_KEY,
-      },
-      body: JSON.stringify(payload),
-    });
-
-    const data = await res.json();
-    console.log(` -> Result for ${t.slug}:`, data);
+    for (let attempt = 1; attempt <= 4; attempt++) {
+      try {
+        const res = await fetch(`${WP_URL}/wp-json/autosync/v1/import`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Connection: 'close',
+            'x-sync-key': SYNC_KEY,
+          },
+          body: JSON.stringify(payload),
+        });
+        const text = await res.text();
+        const data = JSON.parse(text);
+        console.log(` -> Result for ${t.slug}:`, data);
+        break;
+      } catch (err) {
+        if (attempt === 4) throw err;
+        console.warn(`   [Retry ${attempt}/4] ${t.slug} failed (${err.message}), retrying...`);
+        await new Promise((r) => setTimeout(r, attempt * 1500));
+      }
+    }
   }
 }
 

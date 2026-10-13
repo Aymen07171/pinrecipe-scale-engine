@@ -339,12 +339,14 @@ export async function prepareAndValidatePins(rawRecipes, options = {}) {
     // Build candidate Title and Description
     const rawTitle =
       r.pinTitle ||
+      r.pinterestPin?.title ||
       (r.priority === 1
         ? `${r.title} — Authentic Step-by-Step Italian Kitchen Guide`
         : r.title || '');
 
     const rawDescription =
       r.pinDescription ||
+      r.pinterestPin?.description ||
       (r.priority === 7
         ? `${r.metaDescription || ''} Discover how traditional Genoese cooks boil diced Yukon Gold potatoes and tender green beans in the exact same pot as the trenette pasta so the starchy cooking water emulsifies with fresh basil, pine nuts, garlic, Parmigiano-Reggiano, Pecorino Fiore Sardo, and cold-pressed Ligurian extra virgin olive oil into a velvety emerald sauce. Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!`
         : `${r.metaDescription || ''} Grab the full step-by-step Italian recipe and free printable 1-page PDF recipe card at Semplice Italian Kitchen!`.trim());
@@ -362,9 +364,12 @@ export async function prepareAndValidatePins(rawRecipes, options = {}) {
     const destinationLink = sanitizeField(
       r.permalink || r.link || `https://foodsprepared.wasmer.app/${r.slug || ''}/`
     );
-    const boardName = sanitizeField(r.board || catConfig.board);
-    const sectionName = sanitizeField(r.section || catConfig.section);
-    const keywords = sanitizeField(r.keywords || catConfig.keywords);
+    const boardName = sanitizeField(r.board || r.pinterestPin?.board || catConfig.board);
+    const sectionName = sanitizeField(r.section || r.pinterestPin?.section || catConfig.section);
+    const pinKeywords = r.pinterestPin?.hashtags
+      ? `${catConfig.keywords}, ${r.pinterestPin.hashtags.map((h) => h.replace(/^#/, '')).join(', ')}`
+      : catConfig.keywords;
+    const keywords = sanitizeField(r.keywords || pinKeywords);
     const isVideo = /\.(mp4|mov|m4v)(\?.*)?$/i.test(mediaUrl);
     const thumbnailCell = isVideo ? sanitizeField(r.videoThumbnail || '0:02') : '';
 
@@ -748,6 +753,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
 
     const outDir = path.join(__dirname, '..', 'output');
     const strictCsvPath = path.join(outDir, 'pinterest_bulk_upload_template.csv');
+    const new10CsvPath = path.join(outDir, 'pinterest_new_10_seo_recipes_template.csv');
     const extendedCsvPath = path.join(outDir, 'pinterest_bulk_audit_extended.csv');
     const reportJsonPath = path.join(outDir, 'pinterest_publish_summary_report.json');
     const logTxtPath = path.join(outDir, 'pinterest_publish_log.txt');
@@ -755,6 +761,13 @@ if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
     fs.writeFileSync(strictCsvPath, strictCsv, 'utf8');
     fs.writeFileSync(extendedCsvPath, extendedCsv, 'utf8');
     fs.writeFileSync(reportJsonPath, JSON.stringify(summaryReport, null, 2), 'utf8');
+
+    // Also generate a dedicated 8-column Pinterest template CSV for just the 10 new SEO recipes (priority >= 13)
+    const new10Pins = summaryReport.pins.filter((p) => p.priority >= 13);
+    if (new10Pins.length > 0) {
+      const { strictCsv: new10StrictCsv } = generatePinterestCsvFiles(new10Pins);
+      fs.writeFileSync(new10CsvPath, new10StrictCsv, 'utf8');
+    }
 
     const humanLogLines = [
       '================================================================================',
@@ -773,9 +786,10 @@ if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
       `Direct API Failures:       ${summaryReport.totals.apiPublishedFailed}`,
       '--------------------------------------------------------------------------------',
       'OUTPUT FILES GENERATED:',
-      `  1. Strict Pinterest Template CSV:  ${strictCsvPath}`,
-      `  2. Extended Audit CSV (w/ Errors): ${extendedCsvPath}`,
-      `  3. JSON Summary Report:            ${reportJsonPath}`,
+      `  1. Strict Pinterest Template CSV (All ${summaryReport.totals.validRowsGenerated}): ${strictCsvPath}`,
+      `  2. New 10 SEO Recipes Template CSV:         ${new10CsvPath}`,
+      `  3. Extended Audit CSV (w/ Errors):          ${extendedCsvPath}`,
+      `  4. JSON Summary Report:                     ${reportJsonPath}`,
       '--------------------------------------------------------------------------------',
       'DETAILED EXECUTION LOG:',
       ...summaryReport.logs.map((l) => `[${l.timestamp}] [${l.level}] ${l.message}`),
