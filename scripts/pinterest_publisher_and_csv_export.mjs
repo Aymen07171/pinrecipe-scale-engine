@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { exportPinterestExcelWorkbooks } from './export_pinterest_excel.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -768,6 +769,9 @@ if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
       const { strictCsv: new10StrictCsv } = generatePinterestCsvFiles(new10Pins);
       fs.writeFileSync(new10CsvPath, new10StrictCsv, 'utf8');
     }
+
+    // Also export native Excel (.xlsx) workbooks
+    exportPinterestExcelWorkbooks();
 
     const humanLogLines = [
       '================================================================================',
